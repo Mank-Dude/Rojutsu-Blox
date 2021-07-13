@@ -2,7 +2,7 @@ local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vep1032/
 
 MAINTTL = "Rojutsu Blox"
 
-local win = VLib:Window("|DEMON GOD|#2529", Color3.fromRGB(196, 40, 28))
+local win = VLib:Window("MUZ HUB", Color3.fromRGB(196, 40, 28))
 
 local ss = win:Tab("Auto Farm")
 local se = win:Tab("Misc")
@@ -13,21 +13,13 @@ for i,v in pairs(workspace:GetChildren()) do
     end
 end
 
-_G.KillAuraToggle = true
-
-spawn(function()
-while wait() do
-if _G.KillAuraToggle == true then
-for i=1,50 do
+se:Toggle("Kill Aura",function(t)
+kaura = t
+game:GetService"RunService".RenderStepped:Connect(function()
+    if kaura == false then return end
 local args = {
-    [1] = "No",
-    [2] = 1
+    [1] = "No"
 }
-workspace.EventHolder.Combat_Damage.Reactor:FireServer(unpack(args))
-end
-end
-end
-end)
 
 workspace.EventHolder.Combat_Damage.Reactor:FireServer(unpack(args))
 end)
@@ -54,7 +46,7 @@ until v.Humanoid.Health <= 0 or autofarm2 == false
    end
 end)
 
-Quest_Table = {"Level 1+","Level 15+","Level 30+","Level 75+","Level 150+",Level 250+"}
+Quest_Table = {"Level 1+","Level 15+","Level 30+","Level 75+","Level 150+"}
 Quest_Table1 = {"Level 1+","Level 30+","Level 75+"}
 
 ss:Dropdown("Select Quest",Quest_Table,function(t)
@@ -86,11 +78,6 @@ elseif qst == "Level 75+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled =
         game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
         
    elseif qst == "Level 150+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-153.8, 29, 710.7)
-       wait(.5)
-        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
-        
-        elseif qst == "Level 250+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-153.8, 29, 710.7)
        wait(.5)
         game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
