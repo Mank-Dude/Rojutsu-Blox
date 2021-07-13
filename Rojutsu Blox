@@ -1,0 +1,128 @@
+local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vep1032/VepStuff/main/Rgb%20Ui"))()
+
+MAINTTL = "Rojutsu Blox"
+
+local win = VLib:Window("|DEMON GOD|#2529", Color3.fromRGB(196, 40, 28))
+
+local ss = win:Tab("Auto Farm")
+local se = win:Tab("Misc")
+local Mobs = {}
+for i,v in pairs(workspace:GetChildren()) do
+    if v:IsA("Model") and v:FindFirstChild("DeathScript") and not table.find(Mobs,v.Name) then
+        table.insert(Mobs,v.Name)
+    end
+end
+
+_G.KillAuraToggle = true
+
+spawn(function()
+while wait() do
+if _G.KillAuraToggle == true then
+for i=1,50 do
+local args = {
+    [1] = "No",
+    [2] = 1
+}
+workspace.EventHolder.Combat_Damage.Reactor:FireServer(unpack(args))
+end
+end
+end
+end)
+
+workspace.EventHolder.Combat_Damage.Reactor:FireServer(unpack(args))
+end)
+end)
+getgenv().npc = nil
+ss:Dropdown("Mobs",Mobs,function(t)
+npc = t    
+end)
+
+
+ss:Toggle("Auto Farm",function(t)
+autofarm2 = t
+while autofarm2 do wait()
+pcall(function()
+for i,v in pairs(workspace:GetChildren()) do
+    if v.Name == npc and game.Players.LocalPlayer.PlayerGui.Quest.Enabled ~= false then
+     repeat
+         wait()
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame + v.HumanoidRootPart.CFrame.lookVector * -2
+until v.Humanoid.Health <= 0 or autofarm2 == false
+    end
+    end
+     end)
+   end
+end)
+
+Quest_Table = {"Level 1+","Level 15+","Level 30+","Level 75+","Level 150+",Level 250+"}
+Quest_Table1 = {"Level 1+","Level 30+","Level 75+"}
+
+ss:Dropdown("Select Quest",Quest_Table,function(t)
+qst  = t    
+end)
+
+ss:Toggle("AutoQuest",function(t)
+    autoquest = t
+    while autoquest do wait()
+        pcall(function()
+    if game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false and qst == "Level 1+" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47.1327896, 61, 253.397293)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+       
+    elseif qst == "Level 15+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(51.8999405, 61, -72.4807816)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+   
+        elseif qst == "Level 30+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-245.153702, 30, 161.02478)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+
+elseif qst == "Level 75+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-442.301605, 30, 86.6446762)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+        
+   elseif qst == "Level 150+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-153.8, 29, 710.7)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+        
+        elseif qst == "Level 250+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-153.8, 29, 710.7)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+   
+        end
+     end)
+  end
+end)
+ss:Dropdown("Select Daily Quest",Quest_Table1,function(te)
+qste  = te
+end)
+
+ss:Toggle("Auto Daily Quest",function(t)
+    autoquest1 = t
+    while autoquest1 do wait()
+        pcall(function()
+    if game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false and qste == "Level 1+" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(241.9, 65.6, 149.1)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+   
+        elseif qste == "Level 30+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-168.4, 29.2, 44.39)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+
+elseif qste == "Level 75+" and game.Players.LocalPlayer.PlayerGui.Quest.Enabled == false then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-577.15, 30, 146)
+       wait(.5)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.B, false, game)
+   
+        end
+     end)
+  end
+end)
